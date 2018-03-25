@@ -1,0 +1,156 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%绪论%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[UTF8]{ctexart} 
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{bm}
+\pagestyle{plain}
+\title{绪论}
+\date{}
+ \begin{document}
+    \maketitle 
+    ~~方程研究的是数量的等式关系.我们本书中学习的偏微分方程又称为数学物理方程，这是指某些未知量遵循的物理规律而导出的偏微分方程，
+    如热的分布，流体的流动，声音的传播等.
+
+~~什么是方程？含有未知量的等式叫做方程.
+
+~~什么是函数方程？含有未知函数的等式是函数方程.
+
+~~微分方程是一种特殊的函数方程，包括常微分方程（Ordinary Differential Equation，ODE）和
+偏微分方程（Partial Differential Equation，PDE），含有一元未知函数及其各阶导数的等式就称为常微分方程，
+其中含有未知函数的最高阶就称为方程的阶.同理，含有多元未知函数及其各阶偏导数的等式就称为偏微分方程，
+其中含有的未知函数的最高阶就称为该方程的阶.
+
+~~常微分方程是特殊的偏微分方程.偏微分方程是常微分方程的拓广.
+
+~~综上所述，学好偏微分方程必须在数学分析，常微分方程，复变函数等的基础上学好偏微分方程.
+
+~~下面我们介绍一些常用的记号和公式：\\
+(1)
+\begin{equation*}
+\frac{\partial u}{\partial x}=u_x,\frac{\partial u}{\partial y}=u_y
+\end{equation*}
+(2)梯度：梯度是从标量场到向量场的微分映射.\\
+i.二元：设\ $u=u(x,y),(x,y)\in\Omega\subseteq R^2$
+\begin{equation*}
+\mathrm{grad}\ u=(u_x,u_y)\triangleq\nabla u
+\end{equation*}
+称为函数$u$的梯度.\\
+ii.三元：设$u=u(x,y,z),(x,y,z)\in\Omega\subseteq R^3$
+\begin{equation*}
+\mathrm{grad}\ u=(u_x,u_y,u_z)\triangleq\nabla u
+\end{equation*}\\
+(3)散度：散度是从向量场到标量场的微分映射.\\
+i.二元：设$\ \bm F=(P(x,y),Q(x,y)):R^2\rightarrow R$，则\\
+\begin{equation*}
+\mathrm{div}\ \bm F=P_x+Q_y
+\end{equation*}\\
+称为向量函数F的散度.\\
+ii.三元：设$\ \bm F=(P(x,y,z),Q(x,y,z),R(x,y,z)):R^3\rightarrow R$，则\\
+\begin{equation*}
+\mathrm{div}\ \bm F=P_x+Q_y+R_z
+\end{equation*}\\
+拉普拉斯算子：\\
+设\\
+\begin{equation*}
+\triangle=\frac{\partial^2}{\partial x^2}+\frac{\partial^2}{\partial y^2}+\frac{\partial^2}{\partial z^2}
+\end{equation*}
+则\\
+\begin{equation*}
+\vartriangle=\mathrm{div}(\triangledown)
+\end{equation*}
+称为拉普拉斯算子.
+(4)旋度：旋度是从向量场到张量场的微分映射.\\
+i.二元： 设$\ \bm F=(P(x,y),Q(x,y)):R^2\rightarrow R^2$，则\\
+\begin{equation*}
+rot\ \bm F=Q_x-P_y
+\end{equation*}
+称为向量函数$\bm F$的旋度.
+ii.三元：设$\ \bm F=(P(x,y,z),Q(x,y,z),R(x,y,z)):R^3\rightarrow R^3$，则\\
+\begin{equation*}
+rot\bm F=\begin{pmatrix} i & j & k \\ \partial_x & \partial_y & \partial_z \\P & Q & R \end{pmatrix}
+\end{equation*}\\
+称为向量函数$\bm F$的旋度.\\
+(5)二维格林公式\\
+~~设$\ \bm F=(P(x,y),Q(x,y)):\Omega\subseteq R^2\rightarrow R^2$，其中$\Omega$是一个开域.
+$\Gamma=\partial\Omega$是$\Omega$的边界，$\Gamma$的方向是右手方向.$\bm \tau$为$\Gamma$的单位法向量.
+$\bm \tau=(\cos(\tau,x),\cos(\tau,y))$，则\\
+\begin{equation*}
+\iint\limits_\Omega rot\bm F dxdy=\oint\limits_\Gamma \bm F \cdot\bm \tau ds 
+\end{equation*}
+(6)三维格林公式\\
+~~设$\ \bm F=(P(x,y,z),Q(x,y,z),R(x,y,z)):\Omega\subseteq R^3\rightarrow R^3$，其中$\Omega$是一个开域.
+$\Gamma=\partial\Omega$是$\Omega$的边界，$\bm n$为$\bm S$的外法矢，则\\
+\begin{equation*}
+\iiint\limits_\Omega \mathrm{div}\bm F dxdydz=\iint\limits_S \bm F\cdot\bm n d\sigma 
+\end{equation*}
+(7)二维与三维形式的统一\\
+~~二维区域$\Omega$的边界$\Gamma$的切向量$\bm \tau$与外法矢$\bm n$垂直，$\bm n$是$\bm \tau$经过顺时针
+旋转$-\pi/2$之后而成的.而二维旋转变换\\
+\begin{equation*}
+R_\theta(x,y)=(x,y)\begin{pmatrix}\cos\theta &\sin\theta \\-sin\theta & \cos\theta\end{pmatrix}
+\end{equation*}
+则\\
+\begin{equation*}
+\begin{split}\bm{n}&=(\cos(\bm{n},x),\cos(\bm{n},y))\\
+&=(\cos(\bm{\tau},x),\cos(\bm{\tau},y))\begin{pmatrix}0&-1\\1&0\end{pmatrix}\\
+&=(\cos(\bm{\tau},y),-\cos(\bm{\tau},x)).
+\end{split}
+\end{equation*}\\
+令$\bm{F_1}=(Q,-P)$,则$\mathrm{div}~\bm{F}_1=rot~\bm{F}$,\\
+从而\\
+\begin{equation*}
+\begin{split}
+\iint\limits_\Omega \mathrm{div}~\bm{F_1}dxdy&=\iint\limits_\Omega rot~\bm{F}dxdy\\
+&=\int\limits_\Gamma(P(x,y)\cos(\bm{\tau},x)+Q(x,y)\cos(\bm{\tau},y))ds\\
+&=\int\limits_\Gamma(-P\-\cos(\bm{\tau},x)+Q(x,y)\cos(\bm{\tau},y))ds\\
+&=\int\limits_\Gamma(Q(x,y)n_1+P(x,y)n_2)ds=\int\limits_\Gamma\bm{F_1}\cdot\bm{n}ds 
+\end{split}
+\end{equation*}\\
+所以\\
+\begin{equation*}
+\iint\limits_\Omega \mathrm{div}~\bm{F_1}dxdy=\int\limits_\Gamma \bm{F_1}\cdot\bm{n}ds.
+\end{equation*}\\
+在此，我们看到二维，三维的格林公式形式变成了统一.\\
+(8)斯托克斯公式与格林公式的统一\\
+~~有空间曲面$\Sigma,\Gamma=\partial\Sigma$按右手螺旋法则，$\bm{F}=(P(x,y,z),Q(x,y,z),R(x,y,z))$
+在$\Sigma$上，$\bm{n}$为$\Sigma$的法矢，$\bm{\tau}$为$\Gamma$的切向，$\bm{n}$与$\bm{\tau}$构成右手法则，则有
+\\\begin{equation*}
+\iint\limits_\Sigma rot\bm{F}\cdot\bm{n} ds=\oint\limits_\Gamma \bm{F}\cdot\bm{\tau} ds 
+\end{equation*}\\
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%绪论%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%                      :;J7, :,                        ::;7:
+%                      ,ivYi, ,                       ;LLLFS:
+%                      :iv7Yi                       :7ri;j5PL
+%                     ,:ivYLvr                    ,ivrrirrY2X,
+%                     :;r@Wwz.7r:                :ivu@kexianli.
+%                    :iL7::,:::iiirii:ii;::::,,irvF7rvvLujL7ur
+%                   ri::,:,::i:iiiiiii:i:irrv177JX7rYXqZEkvv17
+%                ;i:, , ::::iirrririi:i:::iiir2XXvii;L8OGJr71i
+%              :,, ,,:   ,::ir@mingyi.irii:i:::j1jri7ZBOS7ivv,
+%                ,::,    ::rv77iiiriii:iii:i::,rvLq@GEEk.Li
+%             ,,      ,, ,:ir7ir::,:::i;ir:::i:i::rSGGYri712:
+%           :::  ,v7r:: ::rrv77:, ,, ,:i7rrii:::::, ir7ri7Lri
+%          ,     2OBBOi,iiir;r::        ,irriiii::,, ,iv7Luur:
+%        ,,     i78MBBi,:,:::,:,  :7FSL: ,iriii:::i::,,:rLqXv::
+%        :      iuMMP: :,:::,:ii;2GY7OBB0viiii:i:iii:i:::iJqL;::
+%       ,     ::::i   ,,,,, ::LuBBu BBBBBErii:i:i:i:i:i:i:r77ii
+%      ,       :       , ,,:::rruBZ1MBBqi, :,,,:::,::::::iiriri:
+%     ,               ,,,,::::i:  @GEEK312.       ,:,, ,:::ii;i7:
+%    :,       rjujLYLi   ,,:::::,:::::::::,,   ,:i,:,,,,,::i:iii
+%    ::      BBBBBBBBB0,    ,,::: , ,:::::: ,      ,,,, ,,:::::::
+%    i,  ,  ,8BMMBBBBBBi     ,,:,,     ,,, , ,   , , , :,::ii::i::
+%    :      iZMOMOMBBM2::::::::::,,,,     ,,,,,,:,,,::::i:irr:i:::,
+%    i   ,,:;u0MBMOG1L:::i::::::  ,,,::,   ,,, ::::::i:i:iirii:i:i:
+%    :    ,iuUuuXUkFu7i:iii:i:::, :,:,: ::::::::i:i:::::iirr7iiri::
+%    :     :rk@Yizero.i:::::, ,:ii:::::::i:::::i::,::::iirrriiiri::,
+%     :      5BMBBBBBBSr:,::rv2kuii:::iii::,:i:,, , ,,:,:i@petermu.,
+%          , :r50EZ8MBBBBGOBBBZP7::::i::,:::::,: :,:,::i;rrririiii::
+%              :jujYY7LS0ujJL7r::,::i::,::::::::::::::iirirrrrrrr:ii:
+%           ,:  :@kevensun.:,:,,,::::i:i:::::,,::::::iir;ii;7v77;ii;i,
+%           ,,,     ,,:,::::::i:iiiii:i::::,, ::::iiiir@geek312.r;7:i,
+%        , , ,,,:,,::::::::iiiiiiiiii:,:,:::::::::iiir;ri7vL77rrirri::
+%         :,, , ::::::::i:::i:::i:i::,,,,,:,::i:i:::r;@xingjunlong.ii:::
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -1,2 +1,2 @@
-# Python2.7_ex1
+# Python excise
 Well,enjoying the new game~~~~~
